@@ -64,15 +64,119 @@ select {
   box-sizing: border-box;
 }
 
+/* ==========================================
+   計算結果＆タブ切替レイアウト
+   ========================================== */
 .result-box {
-  background: #121214;
-  padding: 15px;
-  border-radius: 8px;
+  background: #18181b;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #27272a;
   margin-top: 20px;
 }
 
-.result-box strong {
-  color: #00e676;
+/* タブ切替ボタンのレイアウト */
+.result-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #27272a;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.tab-btn {
+  background: transparent;
+  color: #a1a1aa;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background-color: #27272a;
+}
+
+.tab-btn.active {
+  color: #38bdf8;
+  background-color: #1e293b;
+  border: 1px solid #3b82f6;
+}
+
+/* タブコンテンツの表示・非表示切り替え */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* グラフ表示用コンテナ（ダミー枠） */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: #121214;
+  border: 2px dashed #27272a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-placeholder-text {
+  color: #71717a;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+/* 既存のカードスタイル */
+.result-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.result-group.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.result-card {
+  background: #27272a;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-card.primary {
+  background: #1e293b;
+  border: 1px solid #3b82f6;
+  grid-column: span 2;
+}
+
+.result-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.result-card strong {
+  font-size: 1.25rem;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.result-card.primary strong {
+  font-size: 1.6rem;
+  color: #60a5fa;
 }
 
 /* フィルターのスタイル */
@@ -149,6 +253,121 @@ select {
 
 
 /* ==========================================
+   聖遺物メインステータス選択（グリッド整列）
+   ========================================== */
+.artifact-main-section {
+  background-color: #1e2029;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.artifact-slot {
+  margin-bottom: 14px;
+}
+
+.slot-title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #a0a5b5;
+  margin-bottom: 8px;
+}
+
+/* 8列固定のグリッドレイアウト */
+.option-grid {
+  display: grid;
+  /* 8列を均等幅で配置 */
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+
+/* 選択ボタンの基本スタイル */
+.opt-btn {
+  background-color: #2a2d37;
+  color: #c0c5d5;
+  border: 1px solid #3f4454;
+  border-radius: 6px;
+  padding: 8px 2px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+/* ホバー時 */
+.opt-btn:hover {
+  border-color: #ffd700;
+  color: #fff;
+}
+
+/* 選択中（アクティブ）のボタン */
+.opt-btn.active {
+  background-color: #ffd700;
+  color: #111217;
+  border-color: #ffd700;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+/* 空白セル（列位置合わせ用） */
+.empty-cell {
+  /* ボタンと高さを揃えるための透明枠 */
+  min-height: 33px;
+  background-color: transparent;
+}
+
+/* 上下矢印（スピンボタン）の削除 */
+input[type="number"].no-spin::-webkit-outer-spin-button,
+input[type="number"].no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"].no-spin {
+  -moz-appearance: textfield;
+}
+
+/* ステッパー表示枠 */
+.stepper-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper-container input {
+  width: 70px !important;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* 加減調整ボタン */
+.step-btn {
+  background-color: #2a2d37;
+  color: #00e676;
+  border: 1px solid #3f4454;
+  border-radius: 4px;
+  padding: 5px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.step-btn:hover {
+  background-color: #00e676;
+  color: #121214;
+  border-color: #00e676;
+}
+
+.step-btn:active {
+  transform: scale(0.92);
+}
+
+/* ==========================================
    スマホ・タブレット向けレスポンシブ対応
    ========================================== */
 @media (max-width: 768px) {
@@ -162,8 +381,15 @@ select {
     gap: 20px;
   }
 
-  .left-panel,
+  /* ★順序変更：キャラクター選択（右）を上、入力欄（左）を下へ */
   .right-panel {
+    order: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .left-panel {
+    order: 2;
     width: 100%;
     min-width: 0;
   }
@@ -180,6 +406,10 @@ select {
     font-size: 1rem; /* スマホの自動ズーム防止 */
   }
 
+  .result-group {
+    flex-direction: column;
+  }
+
   /* キャラクター一覧のスクロール領域調整 */
   .character-grid {
     grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
@@ -189,5 +419,16 @@ select {
   .char-card img {
     width: 55px;
     height: 55px;
+  }
+
+  .option-grid {
+    grid-template-columns: repeat(8, minmax(58px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 6px; /* スクロールバー用の余白 */
+  }
+
+  .opt-btn {
+    padding: 6px 0;
+    font-size: 0.7rem;
   }
 }
