@@ -1,0 +1,272 @@
+[
+  {
+    "id": "genSword_674_crt",
+    "name": "汎用片手剣 (基礎674 / 会心率22.1%)",
+    "weaponType": "sword",
+    "baseAtk": 674,
+    "subStatType": "crt",
+    "subStatValue": 22.1,
+    "rarity": 5
+  },
+  {
+    "id": "genSword_674_crd",
+    "name": "汎用片手剣 (基礎674 / 会心ダメ44.1%)",
+    "weaponType": "sword",
+    "baseAtk": 674,
+    "subStatType": "crd",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genSword_608_crt",
+    "name": "汎用片手剣 (基礎608 / 会心率33.1%)",
+    "weaponType": "sword",
+    "baseAtk": 608,
+    "subStatType": "crt",
+    "subStatValue": 33.1,
+    "rarity": 5
+  },
+  {
+    "id": "genSword_608_crd",
+    "name": "汎用片手剣 (基礎608 / 会心ダメ66.2%)",
+    "weaponType": "sword",
+    "baseAtk": 608,
+    "subStatType": "crd",
+    "subStatValue": 66.2,
+    "rarity": 5
+  },
+  {
+    "id": "genSword_542_crt",
+    "name": "汎用片手剣 (基礎542 / 会心率44.1%)",
+    "weaponType": "sword",
+    "baseAtk": 542,
+    "subStatType": "crt",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genSword_542_crd",
+    "name": "汎用片手剣 (基礎542 / 会心ダメ88.2%)",
+    "weaponType": "sword",
+    "baseAtk": 542,
+    "subStatType": "crd",
+    "subStatValue": 88.2,
+    "rarity": 5
+  },
+  {
+    "id": "genClaymore_674_crt",
+    "name": "汎用両手剣 (基礎674 / 会心率22.1%)",
+    "weaponType": "claymore",
+    "baseAtk": 674,
+    "subStatType": "crt",
+    "subStatValue": 22.1,
+    "rarity": 5
+  },
+  {
+    "id": "genClaymore_674_crd",
+    "name": "汎用両手剣 (基礎674 / 会心ダメ44.1%)",
+    "weaponType": "claymore",
+    "baseAtk": 674,
+    "subStatType": "crd",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genClaymore_608_crt",
+    "name": "汎用両手剣 (基礎608 / 会心率33.1%)",
+    "weaponType": "claymore",
+    "baseAtk": 608,
+    "subStatType": "crt",
+    "subStatValue": 33.1,
+    "rarity": 5
+  },
+  {
+    "id": "genClaymore_608_crd",
+    "name": "汎用両手剣 (基礎608 / 会心ダメ66.2%)",
+    "weaponType": "claymore",
+    "baseAtk": 608,
+    "subStatType": "crd",
+    "subStatValue": 66.2,
+    "rarity": 5
+  },
+  {
+    "id": "genClaymore_542_crt",
+    "name": "汎用両手剣 (基礎542 / 会心率44.1%)",
+    "weaponType": "claymore",
+    "baseAtk": 542,
+    "subStatType": "crt",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genClaymore_542_crd",
+    "name": "汎用両手剣 (基礎542 / 会心ダメ88.2%)",
+    "weaponType": "claymore",
+    "baseAtk": 542,
+    "subStatType": "crd",
+    "subStatValue": 88.2,
+    "rarity": 5
+  },
+  {
+    "id": "genPolearm_674_crt",
+    "name": "汎用長柄武器 (基礎674 / 会心率22.1%)",
+    "weaponType": "polearm",
+    "baseAtk": 674,
+    "subStatType": "crt",
+    "subStatValue": 22.1,
+    "rarity": 5
+  },
+  {
+    "id": "genPolearm_674_crd",
+    "name": "汎用長柄武器 (基礎674 / 会心ダメ44.1%)",
+    "weaponType": "polearm",
+    "baseAtk": 674,
+    "subStatType": "crd",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genPolearm_608_crt",
+    "name": "汎用長柄武器 (基礎608 / 会心率33.1%)",
+    "weaponType": "polearm",
+    "baseAtk": 608,
+    "subStatType": "crt",
+    "subStatValue": 33.1,
+    "rarity": 5
+  },
+  {
+    "id": "genPolearm_608_crd",
+    "name": "汎用長柄武器 (基礎608 / 会心ダメ66.2%)",
+    "weaponType": "polearm",
+    "baseAtk": 608,
+    "subStatType": "crd",
+    "subStatValue": 66.2,
+    "rarity": 5
+  },
+  {
+    "id": "genPolearm_542_crt",
+    "name": "汎用長柄武器 (基礎542 / 会心率44.1%)",
+    "weaponType": "polearm",
+    "baseAtk": 542,
+    "subStatType": "crt",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genPolearm_542_crd",
+    "name": "汎用長柄武器 (基礎542 / 会心ダメ88.2%)",
+    "weaponType": "polearm",
+    "baseAtk": 542,
+    "subStatType": "crd",
+    "subStatValue": 88.2,
+    "rarity": 5
+  },
+  {
+    "id": "genCatalyst_674_crt",
+    "name": "汎用法器 (基礎674 / 会心率22.1%)",
+    "weaponType": "catalyst",
+    "baseAtk": 674,
+    "subStatType": "crt",
+    "subStatValue": 22.1,
+    "rarity": 5
+  },
+  {
+    "id": "genCatalyst_674_crd",
+    "name": "汎用法器 (基礎674 / 会心ダメ44.1%)",
+    "weaponType": "catalyst",
+    "baseAtk": 674,
+    "subStatType": "crd",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genCatalyst_608_crt",
+    "name": "汎用法器 (基礎608 / 会心率33.1%)",
+    "weaponType": "catalyst",
+    "baseAtk": 608,
+    "subStatType": "crt",
+    "subStatValue": 33.1,
+    "rarity": 5
+  },
+  {
+    "id": "genCatalyst_608_crd",
+    "name": "汎用法器 (基礎608 / 会心ダメ66.2%)",
+    "weaponType": "catalyst",
+    "baseAtk": 608,
+    "subStatType": "crd",
+    "subStatValue": 66.2,
+    "rarity": 5
+  },
+  {
+    "id": "genCatalyst_542_crt",
+    "name": "汎用法器 (基礎542 / 会心率44.1%)",
+    "weaponType": "catalyst",
+    "baseAtk": 542,
+    "subStatType": "crt",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genCatalyst_542_crd",
+    "name": "汎用法器 (基礎542 / 会心ダメ88.2%)",
+    "weaponType": "catalyst",
+    "baseAtk": 542,
+    "subStatType": "crd",
+    "subStatValue": 88.2,
+    "rarity": 5
+  },
+  {
+    "id": "genBow_674_crt",
+    "name": "汎用弓 (基礎674 / 会心率22.1%)",
+    "weaponType": "bow",
+    "baseAtk": 674,
+    "subStatType": "crt",
+    "subStatValue": 22.1,
+    "rarity": 5
+  },
+  {
+    "id": "genBow_674_crd",
+    "name": "汎用弓 (基礎674 / 会心ダメ44.1%)",
+    "weaponType": "bow",
+    "baseAtk": 674,
+    "subStatType": "crd",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genBow_608_crt",
+    "name": "汎用弓 (基礎608 / 会心率33.1%)",
+    "weaponType": "bow",
+    "baseAtk": 608,
+    "subStatType": "crt",
+    "subStatValue": 33.1,
+    "rarity": 5
+  },
+  {
+    "id": "genBow_608_crd",
+    "name": "汎用弓 (基礎608 / 会心ダメ66.2%)",
+    "weaponType": "bow",
+    "baseAtk": 608,
+    "subStatType": "crd",
+    "subStatValue": 66.2,
+    "rarity": 5
+  },
+  {
+    "id": "genBow_542_crt",
+    "name": "汎用弓 (基礎542 / 会心率44.1%)",
+    "weaponType": "bow",
+    "baseAtk": 542,
+    "subStatType": "crt",
+    "subStatValue": 44.1,
+    "rarity": 5
+  },
+  {
+    "id": "genBow_542_crd",
+    "name": "汎用弓 (基礎542 / 会心ダメ88.2%)",
+    "weaponType": "bow",
+    "baseAtk": 542,
+    "subStatType": "crd",
+    "subStatValue": 88.2,
+    "rarity": 5
+  }
+]
