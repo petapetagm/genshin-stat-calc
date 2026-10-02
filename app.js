@@ -5,6 +5,30 @@ let selectedWeapon = null;
 
 // 初期化処理
 document.addEventListener('DOMContentLoaded', () => {
+
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const savedTheme = localStorage.getItem('theme') || 'light';
+
+  if (savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    if (themeToggleBtn) themeToggleBtn.textContent = '☀️ ライトモード';
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggleBtn.textContent = '🌙 ダークモード';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggleBtn.textContent = '☀️ ライトモード';
+      }
+    });
+  }
+
   // 1. 入力欄の変更監視
   ['baseAtk', 'atkPercent', 'CRT', 'CRD', 'dmgBonus', 'elementMastery', 'lunarStarBonus'].forEach(id => {
     const el = document.getElementById(id);
