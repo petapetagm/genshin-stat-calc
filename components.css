@@ -1,0 +1,269 @@
+/* ==========================================
+   共通入力フォーム・ラベル
+   ========================================== */
+.input-group {
+  margin-bottom: 12px;
+}
+
+label {
+  display: inline-block;
+  width: 120px;
+  font-size: 0.9rem;
+}
+
+input[type="number"],
+select {
+  width: 150px;
+  padding: 6px 10px;
+  background-color: var(--bg-input);
+  color: var(--text-main);
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+select:focus,
+input[type="number"]:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* 数字入力の上下スピンボタン削除 */
+input[type="number"].no-spin::-webkit-outer-spin-button,
+input[type="number"].no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"].no-spin {
+  -moz-appearance: textfield;
+}
+
+/* ==========================================
+   ステッパー（数値調整ボタン）
+   ========================================== */
+.stepper-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepper-container input {
+  width: 70px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.step-btn {
+  background-color: #2a2d37;
+  color: #00e676;
+  border: 1px solid #3f4454;
+  border-radius: 4px;
+  padding: 5px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.step-btn:hover {
+  background-color: #00e676;
+  color: #121214;
+  border-color: #00e676;
+}
+
+.step-btn:active {
+  transform: scale(0.92);
+}
+
+/* ==========================================
+   元素・武器種フィルター
+   ========================================== */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 4px;
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text-main);
+}
+
+.element-icon-group,
+.weapon-icon-group {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+  width: 100%;
+}
+
+/* --- 武器種ボタン（正円・大きめサイズ） --- */
+.wp-btn {
+  width: 42px;              /* ★幅と高さを固定してきれいな正円を維持 */
+  height: 42px;             /* ★大きめサイズ（32px → 42px） */
+  flex: none;               /* 横伸ばしによる楕円化を防止 */
+  padding: 3px;             /* アイコン画像を枠いっぱいに広げるため内側余白を小さく */
+  border: 1.5px solid var(--border-color);
+  border-radius: 50%;       /* 完全な正円 */
+  background-color: #ffffff !important; /* ダークモードでも白背景固定 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-size: 11px;
+  font-weight: bold;
+  color: #0f172a !important;
+}
+
+/* 武器種アイコン画像 */
+.wp-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* アイコンが途切れず枠内いっぱいに拡大 */
+  filter: none !important;
+}
+
+/* 親要素（グループ）の折り返し許可（必要に応じて） */
+.weapon-icon-group {
+  display: flex !important;
+  flex-wrap: wrap !important; /* 横幅が狭い時にきれいに並ぶよう設定 */
+  gap: 8px !important;
+  justify-content: flex-start;
+}
+
+.elem-btn img,
+.wp-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.elem-btn:hover,
+.wp-btn:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.elem-btn.active,
+.wp-btn.active {
+  border-color: var(--accent-color);
+  background-color: rgba(37, 99, 235, 0.15); /* 背景をうっすら明るくして選択中を表現 */
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+.elem-btn.active img,
+.wp-btn.active img {
+  filter: none;
+}
+
+/* ==========================================
+   聖遺物メインステータス選択（8列グリッド）
+   ========================================== */
+.artifact-main-section {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.artifact-slot {
+  margin-bottom: 14px;
+}
+
+.slot-title {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #a0a5b5;
+  margin-bottom: 8px;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+
+.opt-btn {
+  background-color: #2a2d37;
+  color: #c0c5d5;
+  border: 1px solid #3f4454;
+  border-radius: 6px;
+  padding: 8px 2px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.opt-btn:hover {
+  border-color: #ffd700;
+  color: #fff;
+}
+
+.opt-btn.active {
+  background-color: #ffd700;
+  color: #111217;
+  border-color: #ffd700;
+  font-weight: bold;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+.empty-cell {
+  min-height: 33px;
+  background-color: transparent;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  label {
+    width: 110px;
+    font-size: 0.85rem;
+  }
+
+  input[type="number"],
+  select {
+    width: 100px;
+    font-size: 1rem;
+  }
+
+  .option-grid {
+    grid-template-columns: repeat(8, minmax(58px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .opt-btn {
+    padding: 6px 0;
+    font-size: 0.7rem;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera の上下矢印を消す */
+input.no-spin::-webkit-outer-spin-button,
+input.no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox の上下矢印を消す */
+input.no-spin[type=number] {
+  -moz-appearance: textfield;
+}

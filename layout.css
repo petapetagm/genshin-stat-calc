@@ -1,0 +1,56 @@
+/* ==========================================
+   左右2カラムレイアウト（PC用）
+   ========================================== */
+.app-container {
+  display: flex;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.left-panel {
+  flex: 1;
+  background: var(--bg-card);
+  color: var(--text-main);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  min-width: 320px;
+  box-sizing: border-box;
+}
+
+.right-panel {
+  flex: 1.5;
+  background: var(--bg-card);
+  color: var(--text-main);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   スマホ・タブレット向けレスポンシブ対応
+   ========================================== */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .app-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .left-panel {
+    order: 1;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .right-panel {
+    order: 2;
+    width: 100%;
+    min-width: 0;
+  }
+}

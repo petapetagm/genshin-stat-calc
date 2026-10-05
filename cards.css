@@ -1,0 +1,213 @@
+/* ==========================================
+   キャラクター選択グリッド ＆ カード
+   ========================================== */
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 5px;
+  transition: max-height 0.3s ease, opacity 0.3s ease; /* なめらかに縮小 */
+}
+
+/* --- キャラクター選択後の1枠化スタイル --- */
+.character-grid.selected-only {
+  display: flex !important; /* グリッドから単一表示へ変更 */
+  justify-content: flex-start;
+  max-height: none !important;
+  padding: 5px;
+}
+
+/* 選択された以外のカードを非表示にする */
+.character-grid.selected-only .char-card:not(.selected) {
+  display: none !important;
+}
+
+/* 選択されたカード自体の見た目を少し調整（お好みで） */
+.character-grid.selected-only .char-card.selected {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+}
+
+.char-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.char-card * {
+  color: #0f172a;
+}
+
+.char-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.char-card.selected {
+  border-color: #00e676;
+  background: var(--bg-card);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.4);
+}
+
+.char-card img {
+  width: 65px;
+  height: 65px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.char-card span {
+  font-size: 0.8rem;
+  margin-top: 6px;
+  text-align: center;
+  word-break: break-all;
+  font-weight: bold;
+}
+
+/* ダークモード時のキャラクターカード */
+[data-theme="dark"] .char-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .char-card * {
+  color: #f8fafc;
+}
+
+/* ==========================================
+   計算結果表示 ＆ タブ切替
+   ========================================== */
+.result-box {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  margin-top: 20px;
+}
+
+.result-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+}
+
+.tab-btn {
+  background: transparent;
+  color: #a1a1aa;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--text-main);
+  background-color: var(--border-color);
+}
+
+.tab-btn.active {
+  color: #38bdf8;
+  background-color: #1e293b;
+  border: 1px solid #3b82f6;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* 結果数値カード */
+.result-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.result-group.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.result-card {
+  background: #27272a;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-card.primary {
+  background: #1e293b;
+  border: 1px solid #3b82f6;
+  grid-column: span 2;
+}
+
+.result-label {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.result-card strong {
+  font-size: 1.25rem;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.result-card.primary strong {
+  font-size: 1.6rem;
+  color: #60a5fa;
+}
+
+/* グラフ表示用領域 */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  background: var(--bg-input);
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-placeholder-text {
+  color: #71717a;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  .result-group {
+    flex-direction: column;
+  }
+
+  .character-grid {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    max-height: 320px;
+  }
+
+  .char-card img {
+    width: 55px;
+    height: 55px;
+  }
+}

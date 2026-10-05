@@ -1,0 +1,60 @@
+/* ==========================================
+   カラー変数 ＆ テーマ設定
+   ========================================== */
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-main: #0f172a;
+  --border-color: #cbd5e1;
+  --accent-color: #2563eb;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-input: #0f172a;
+  --text-main: #f8fafc;
+  --border-color: #334155;
+  --accent-color: #38bdf8;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   ベーススタイル
+   ========================================== */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sub-text {
+  font-size: 0.85rem;
+  color: #a8a8b3;
+}
+
+/* テーマ切り替えボタン */
+.theme-switch-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.theme-btn {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}

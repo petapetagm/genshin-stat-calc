@@ -6,6 +6,7 @@
   <title>ステータスバランス計算ツール</title>
   <!-- 外部CSSファイルを読み込み -->
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -16,40 +17,65 @@
 
   <div class="app-container">
 
-
     <!-- 左側：フィルター ＆ キャラクターアイコン一覧 -->
     <div class="left-panel">
       <h2>キャラクター選択</h2>
 
       <div class="filter-group">
-        <!-- 元素フィルター -->
+        
+        <!-- 元素フィルター（アイコン選択式） -->
         <div class="filter-item">
-          <label for="element-filter">元素:</label>
-          <select id="element-filter">
-            <option value="all">すべて</option>
-            <option value="pyro">炎 (Pyro)</option>
-            <option value="hydro">水 (Hydro)</option>
-            <option value="anemo">風 (Anemo)</option>
-            <option value="electro">雷 (Electro)</option>
-            <option value="dendro">草 (Dendro)</option>
-            <option value="cryo">氷 (Cryo)</option>
-            <option value="geo">岩 (Geo)</option>
-          </select>
+          <label class="filter-label">元素</label>
+          <div class="element-icon-group" id="element-filter-group">
+            <button type="button" class="elem-btn active" data-element="all">ALL</button>
+            <button type="button" class="elem-btn" data-element="pyro" title="炎">
+              <img src="images/element/pyro.svg" alt="炎">
+            </button>
+            <button type="button" class="elem-btn" data-element="hydro" title="水">
+              <img src="images/element/Hydro.svg" alt="水">
+            </button>
+            <button type="button" class="elem-btn" data-element="anemo" title="風">
+              <img src="images/element/anemo.svg" alt="風">
+            </button>
+            <button type="button" class="elem-btn" data-element="electro" title="雷">
+              <img src="images/element/electro.svg" alt="雷">
+            </button>
+            <button type="button" class="elem-btn" data-element="dendro" title="草">
+              <img src="images/element/dendro.svg" alt="草">
+            </button>
+            <button type="button" class="elem-btn" data-element="cryo" title="氷">
+              <img src="images/element/cryo.svg" alt="氷">
+            </button>
+            <button type="button" class="elem-btn" data-element="geo" title="岩">
+              <img src="images/element/geo.svg" alt="岩">
+            </button>
+          </div>
         </div>
 
-        <!-- 武器種フィルター -->
+        <!-- 武器種フィルター（アイコン選択式） -->
         <div class="filter-item">
-          <label for="weapon-type-filter">武器種:</label>
-          <select id="weapon-type-filter">
-            <option value="all">すべて</option>
-            <option value="sword">片手剣</option>
-            <option value="claymore">両手剣</option>
-            <option value="polearm">長柄武器</option>
-            <option value="catalyst">法器</option>
-            <option value="bow">弓</option>
-          </select>
+          <label class="filter-label">武器種</label>
+          <div class="weapon-icon-group" id="weapon-filter-group">
+            <button type="button" class="wp-btn active" data-weapon="all">ALL</button>
+            <button type="button" class="wp-btn" data-weapon="sword" title="片手剣">
+              <img src="images/weapon/sword.webp" alt="片手剣">
+            </button>
+            <button type="button" class="wp-btn" data-weapon="claymore" title="両手剣">
+              <img src="images/weapon/claymore.webp" alt="両手剣">
+            </button>
+            <button type="button" class="wp-btn" data-weapon="polearm" title="長柄武器">
+              <img src="images/weapon/polearm.webp" alt="長柄武器">
+            </button>
+            <button type="button" class="wp-btn" data-weapon="catalyst" title="法器">
+              <img src="images/weapon/catalyst.webp" alt="法器">
+            </button>
+            <button type="button" class="wp-btn" data-weapon="bow" title="弓">
+              <img src="images/weapon/bow.webp" alt="弓">
+            </button>
+          </div>
         </div>
-      </div>
+
+      </div><!-- /.filter-group の閉じタグ（★これが抜けていました） -->
 
       <!-- キャラクターアイコン一覧表示エリア -->
       <div id="character-grid" class="character-grid"></div>
@@ -121,47 +147,96 @@
       </div>
     </div>
 
-    <!-- 基礎攻撃力（キャラ・武器未選択時の初期表示） -->
-<div class="input-group">
-  <label for="baseAtk">基礎攻撃力：</label>
-  <input type="number" id="baseAtk" value="0" class="no-spin">
-</div>
+  <!-- 基礎ステータスグループ -->
+  <div class="input-group-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+    <!-- 基礎攻撃力 -->
+    <div class="input-group">
+      <label for="baseAtk">基礎攻撃力：</label>
+      <input type="number" id="baseAtk" value="0" min="0" placeholder="例: 900" class="no-spin">
+    </div>
+
+    <!-- 基礎HP（追加） -->
+    <div class="input-group">
+      <label for="baseHp">基礎HP：</label>
+      <input type="number" id="baseHp" value="0" min="0" placeholder="例: 12000" class="no-spin">
+    </div>
+
+    <!-- 基礎防御力（追加） -->
+    <div class="input-group">
+      <label for="baseDef">基礎防御力：</label>
+      <input type="number" id="baseDef" value="0" min="0" placeholder="例: 800" class="no-spin">
+    </div>
+  </div>
 
   <!-- 攻撃力%（初期値 0%） -->
   <div class="input-group">
     <label for="atkPercent">攻撃力(%)：</label>
     <div class="stepper-container">
       <button type="button" class="step-btn" data-target="atkPercent" data-add="-46.6">-46.6%</button>
+      <button type="button" class="step-btn" data-target="atkPercent" data-add="-20.0">-20.0%</button>
       <button type="button" class="step-btn" data-target="atkPercent" data-add="-5.0">-5.0%</button>
       <input type="number" id="atkPercent" value="0" step="0.1" class="no-spin">
       <button type="button" class="step-btn" data-target="atkPercent" data-add="5.0">+5.0%</button>
+      <button type="button" class="step-btn" data-target="atkPercent" data-add="20.0">+20.0%</button>
       <button type="button" class="step-btn" data-target="atkPercent" data-add="46.6">+46.6%</button>
     </div>
   </div>
+  <details class="more-stats-toggle" style="margin: 15px 0; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+    <summary style="cursor: pointer; font-weight: bold; color: var(--accent-color);">▶ その他のステータス（HP / 防御力）</summary>
+    
+    <div style="margin-top: 10px;">
+      <!-- HP% -->
+      <div class="input-group">
+        <label for="hpPercent">HP(%)：</label>
+          <div class="stepper-container">
+            <button type="button" class="step-btn" data-target="hpPercent" data-add="-46.6">-46.6%</button>
+            <button type="button" class="step-btn" data-target="hpPercent" data-add="-20.0">-20.0%</button>
+            <button type="button" class="step-btn" data-target="hpPercent" data-add="-5.3">-5.3%</button>
+            <input type="number" id="hpPercent" value="0" step="0.1" class="no-spin">
+            <button type="button" class="step-btn" data-target="hpPercent" data-add="5.3">+5.3%</button>
+            <button type="button" class="step-btn" data-target="hpPercent" data-add="20.0">+20.0%</button>
+            <button type="button" class="step-btn" data-target="hpPercent" data-add="46.6">+46.6%</button>
+          </div>
+      </div>
 
-  <div class="input-group">
+      <!-- 防御力% -->
+      <div class="input-group">
+        <label for="defPercent">防御力(%)：</label>
+          <div class="stepper-container">
+            <button type="button" class="step-btn" data-target="defPercent" data-add="-58.3">-58.3%</button>
+            <button type="button" class="step-btn" data-target="defPercent" data-add="-20.0">-20.0%</button>
+            <button type="button" class="step-btn" data-target="defPercent" data-add="-6.6">-6.6%</button>
+            <input type="number" id="defPercent" value="0" step="0.1" class="no-spin">
+            <button type="button" class="step-btn" data-target="defPercent" data-add="6.6">+6.6%</button>
+            <button type="button" class="step-btn" data-target="defPercent" data-add="20.0">+20.0%</button>
+            <button type="button" class="step-btn" data-target="defPercent" data-add="58.3">+58.3%</button>
+          </div>
+      </div>
+    </div>
+  </details>
+
+    <div class="input-group">
     <label for="CRT">会心率(%)：</label>
     <div class="stepper-container">
       <button type="button" class="step-btn" data-target="CRT" data-add="-31.1">-31.1%</button>
-      <button type="button" class="step-btn" data-target="CRT" data-add="-10">-10%</button>
-      <button type="button" class="step-btn" data-target="CRT" data-add="-3.3">-3.3%</button>
+      <button type="button" class="step-btn" data-target="CRT" data-add="-10.0">-10.0%</button>
+      <button type="button" class="step-btn" data-target="CRT" data-add="-3.5">-3.5%</button>
       <input type="number" id="CRT" value="5.0" step="0.1" class="no-spin">
-      <button type="button" class="step-btn" data-target="CRT" data-add="3.3">+3.3%</button>
-      <button type="button" class="step-btn" data-target="CRT" data-add="10">+10%</button>
+      <button type="button" class="step-btn" data-target="CRT" data-add="3.5">+3.5%</button>
+      <button type="button" class="step-btn" data-target="CRT" data-add="10.0">+10.0%</button>
       <button type="button" class="step-btn" data-target="CRT" data-add="31.1">+31.1%</button>
     </div>
   </div>
 
-  <!-- 会心ダメージ（初期値を基礎の50.0%に設定） -->
   <div class="input-group">
     <label for="CRD">会心ダメージ(%)：</label>
     <div class="stepper-container">
       <button type="button" class="step-btn" data-target="CRD" data-add="-62.2">-62.2%</button>
-      <button type="button" class="step-btn" data-target="CRD" data-add="-10">-10%</button>
-      <button type="button" class="step-btn" data-target="CRD" data-add="-6.6">-6.6%</button>
+      <button type="button" class="step-btn" data-target="CRD" data-add="-10.0">-10.0%</button>
+      <button type="button" class="step-btn" data-target="CRD" data-add="-7.0">-7.0%</button>
       <input type="number" id="CRD" value="50.0" step="0.1" class="no-spin">
-      <button type="button" class="step-btn" data-target="CRD" data-add="6.6">+6.6%</button>
-      <button type="button" class="step-btn" data-target="CRD" data-add="10">+10%</button>
+      <button type="button" class="step-btn" data-target="CRD" data-add="7.0">+7.0%</button>
+      <button type="button" class="step-btn" data-target="CRD" data-add="10.0">+10.0%</button>
       <button type="button" class="step-btn" data-target="CRD" data-add="62.2">+62.2%</button>
     </div>
   </div>
@@ -178,21 +253,19 @@
     </div>
   </div>
 
-    <!-- 元素熟知（初期値 0） -->
   <div class="input-group">
     <label for="elementMastery">元素熟知：</label>
     <div class="stepper-container">
       <button type="button" class="step-btn" data-target="elementMastery" data-add="-187">-187</button>
       <button type="button" class="step-btn" data-target="elementMastery" data-add="-50">-50</button>
-      <button type="button" class="step-btn" data-target="elementMastery" data-add="-20">-20</button>
+      <button type="button" class="step-btn" data-target="elementMastery" data-add="-21">-21</button>
       <input type="number" id="elementMastery" value="0" class="no-spin">
-      <button type="button" class="step-btn" data-target="elementMastery" data-add="20">+20</button>
+      <button type="button" class="step-btn" data-target="elementMastery" data-add="21">+21</button>
       <button type="button" class="step-btn" data-target="elementMastery" data-add="50">+50</button>
       <button type="button" class="step-btn" data-target="elementMastery" data-add="187">+187</button>
     </div>
   </div>
 
-  <!-- 【追加】月・星反応ボーナス -->
   <div class="input-group">
     <label for="lunarStarBonus">月・星反応ボーナス(%)：</label>
     <div class="stepper-container">
@@ -245,23 +318,19 @@
         </div>
         <div class="result-card">
           <span class="result-label">月・星反応ボーナス</span>
-          <strong id="emBonus">0.0%</strong>
+          <strong id="emBonus">100.0%</strong>
         </div>
       </div>
     </div>
 
-    <!-- 2. グラフ表示予定コンテンツ（プレースホルダー） -->
     <div id="chart-tab" class="tab-content">
-      <div class="chart-container">
-        <!-- 後で Chart.js 等を描画する canvas プレースホルダー -->
+      <div class="chart-container" style="position: relative; width: 100%; max-width: 500px; margin: 0 auto; height: 320px;">
         <canvas id="statusChart"></canvas>
-        <div class="chart-placeholder-text">
-          <span>📊 グラフ描画エリア</span>
-        </div>
       </div>
     </div>
   </div>
 
+  <script src="chart.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
