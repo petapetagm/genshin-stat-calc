@@ -1,3 +1,46 @@
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --text-main: #0f172a;
+  --border-color: #e2e8f0;
+  --accent-color: #2563eb;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --bg-input: #0f172a;
+  --text-main: #f8fafc;
+  --border-color: #334155;
+  --accent-color: #38bdf8;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-switch-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.theme-btn {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+/* --- ここまで追加 --- */
+
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -382,13 +425,13 @@ input[type="number"].no-spin {
   }
 
   /* ★順序変更：キャラクター選択（右）を上、入力欄（左）を下へ */
-  .right-panel {
+  .left-panel {
     order: 1;
     width: 100%;
     min-width: 0;
   }
 
-  .left-panel {
+  .right-panel {
     order: 2;
     width: 100%;
     min-width: 0;
@@ -431,4 +474,80 @@ input[type="number"].no-spin {
     padding: 6px 0;
     font-size: 0.7rem;
   }
+}
+
+/* --- テーマ変数をすべてのパーツに強制適用 --- */
+body {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+/* --- テーマ変数＆ライトモード用メリハリ調整 --- */
+body {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* パネル全体 */
+.left-panel,
+.right-panel,
+.result-box,
+.artifact-main-section,
+.weapon-select-section {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* 1. キャラクターカード背景（黒背景を解除して淡いグレー＆はっきりした枠線に） */
+.character-card,
+.char-card,
+#character-grid > div {
+  background-color: #f1f5f9 !important; /* ほんのり青みがかった薄グレー */
+  border: 1px solid #cbd5e1 !important;  /* しっかり見える枠線 */
+  border-radius: 12px !important;
+}
+
+/* キャラクター名などのテキスト */
+.character-card *,
+.char-card *,
+#character-grid * {
+  color: #0f172a !important; /* はっきり読める濃いネイビー/黒 */
+}
+
+/* 2. セレクトボックス（元素・武器種）の枠線と立体感を補強 */
+select,
+input[type="number"] {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #94a3b8 !important; /* 枠線を少し太く・濃く */
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+}
+
+/* フォーカス（選択中）のときはアクセントカラーで光らせる */
+select:focus,
+input[type="number"]:focus {
+  border-color: var(--accent-color) !important;
+  outline: none !important;
+}
+
+/* ダークモード時のカード背景と枠線（上書き） */
+[data-theme="dark"] .character-card,
+[data-theme="dark"] .char-card,
+[data-theme="dark"] #character-grid > div {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .character-card *,
+[data-theme="dark"] .char-card *,
+[data-theme="dark"] #character-grid * {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] select,
+[data-theme="dark"] input[type="number"] {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #475569 !important;
 }
